@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
+import { StatusBar } from "expo-status-bar";
+import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  NativeRouter,
+  Redirect,
+  Route,
+  Switch,
+  useLocation,
+} from "react-router-native";
+import BottomBar from "./components/BottomBar";
+import Home from "./screens/home/index";
+import Search from "./screens/search/index";
+import Reels from "./screens/reels/index";
+import Shop from "./screens/shop/index";
+import Profile from "./screens/profile/index";
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
+      <View style={{ flex: 1 }}>
+        <Switch>
+          <Route exact path="/" component={() => <Redirect to="/home" />} />
+          <Route path="/home" component={Home} />
+          <Route path="/search" component={Search} />
+          <Route path="/reels" component={Reels} />
+          <Route path="/shop" component={Shop} />
+          <Route path="/profile" component={Profile} />
+        </Switch>
+      </View>
+      <BottomBar />
+      <StatusBar style="light" />
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default () => {
+  return (
+    <View style={{ flex: 1 }}>
+      <NativeRouter>
+        <App />
+      </NativeRouter>
+    </View>
+  );
+};
