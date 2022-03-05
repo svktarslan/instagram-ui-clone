@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
+import AsyncButton from "./AsyncButtom";
 export default () => {
   return (
     <View>
-      <Text style={{ color: "white" }}>Reels</Text>
+      <AsyncButton />
     </View>
   );
 };

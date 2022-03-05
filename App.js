@@ -19,7 +19,7 @@ function App() {
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
       <View style={{ flex: 1 }}>
         <Switch>
-          <Route exact path="/" component={() => <Redirect to="/home" />} />
+          <Route exact path="/" component={() => <Redirect to="/reels" />} />
           <Route path="/home" component={Home} />
           <Route path="/search" component={Search} />
           <Route path="/reels" component={Reels} />

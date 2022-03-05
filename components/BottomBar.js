@@ -14,6 +14,7 @@ export default () => {
         justifyContent: "space-around",
         alignItems: "center",
         flexDirection: "row",
+        backgroundColor: "black",
       }}
     >
       <TouchableOpacity onPress={() => history.push("/home")}>
