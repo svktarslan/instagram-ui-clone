@@ -13,6 +13,31 @@ export default ({ actions, title, description, icon }) => {
   const w = Dimensions.get("screen").width * 0.7;
   return (
     <>
+      {/* <CustomAlert
+        icon={<AntDesign name="closecircle" color="red" size={70} />}
+        title="Cikis Yap"
+        description="Uygulamadan çıkış yapmak istediğinize eminmisiniz ? Çıkış
+      yaparsanız tekrardan SMS kodu ile giriş yapmanız gerekir
+      Uygulamayı kapatmak isterseniz telefonunuzun ana sayfa tuşunu
+      kullanınız"
+        actions={[
+          {
+            type: "success",
+            title: "Success",
+            onPress: () => console.log("success"),
+          },
+          {
+            type: "error",
+            title: "Error",
+            onPress: () => console.log("error"),
+          },
+          {
+            type: "cancel",
+            title: "Cancel",
+            onPress: () => console.log("cancel"),
+          },
+        ]}
+      /> */}
       <View
         style={{
           position: "absolute",

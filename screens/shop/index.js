@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
-import LottieView from "lottie-react-native";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
-import ButtonAsync from "./ButtonAsync";
-import CustomAlert from "./CustomAlert";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import BottomSheet from "./BottomSheet";
 
 const delay = (duration) =>
   new Promise(function (resolve, reject) {
@@ -20,37 +18,30 @@ export default () => {
     await delay(2000);
     setDisable(false);
   }
+  const ref = useRef(null);
+
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
-      <CustomAlert
-        icon={<AntDesign name="closecircle" color="red" size={70} />}
-        title="Cikis Yap"
-        description="Uygulamadan çıkış yapmak istediğinize eminmisiniz ? Çıkış
-      yaparsanız tekrardan SMS kodu ile giriş yapmanız gerekir
-      Uygulamayı kapatmak isterseniz telefonunuzun ana sayfa tuşunu
-      kullanınız"
-        actions={[
-          {
-            type: "success",
-            title: "Success",
-            onPress: () => console.log("success"),
-          },
-          {
-            type: "error",
-            title: "Error",
-            onPress: () => console.log("error"),
-          },
-          {
-            type: "cancel",
-            title: "Cancel",
-            onPress: () => console.log("cancel"),
-          },
-        ]}
-      />
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <TouchableOpacity
+          onPress={() => {
+            if (ref?.current?.isActive()) {
+              ref?.current?.scrollTo(0);
+            } else {
+              ref?.current?.scrollTo(-200);
+            }
+          }}
+          style={{
+            width: 200,
+            height: 100,
+            borderRadius: 9,
+            backgroundColor: "orange",
+          }}
+        ></TouchableOpacity>
+        <BottomSheet ref={ref}>
+          <View style={{ flex: 1, backgroundColor: "darkred" }}></View>
+        </BottomSheet>
+      </View>
+    </GestureHandlerRootView>
   );
 };
